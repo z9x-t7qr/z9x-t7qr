@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vérifier la présence dans la base de données</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Vérifier la présence dans la base de données</h1>
+    <form>
+      <label for="idNumber">Numéro de carte d'identité :</label>
+      <input type="text" id="idNumber" name="idNumber"><br><br>
+      <button type="button" onclick="checkData()">Vérifier</button>
+    </form>
+    <div id="result"></div>
+    <script>
+      function checkData() {
+        var idNumber = $("#idNumber").val();
+
+        var url = "https://script.google.com/macros/s/AKfycbzRN1SIEKr4mHsaia2HsLdyTgcQw8VLryHbyG42QpkUT6Trvf4LybA6QP7645hLBPzY/exec";
+        var params = "?idNumber=" + idNumber;
+
+        $.get(url + params, function(response) {
+          $("#result").html(response);
+        });
+      }
+    </script>
+  </body>
+</html>
